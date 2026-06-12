@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheaPantry App Portfolio</title>
+    <style>
+        :root {
+            --bg-main: #fbf7fd;
+            --primary: #6A1B9A;
+            --secondary: #9C27B0;
+            --accent-soft: #f3e8f9;
+            --accent-border: #e1bee7;
+            --text-dark: #251233;
+            --text-gray: #6b5c75;
+            --white: #ffffff;
+            --sparkle-yellow: #ffd54f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            padding: 1.5rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Hero Header */
+        header {
+            background: var(--white);
+            border: 3px solid var(--primary);
+            border-radius: 28px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 6px 6px 0px var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "✨";
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            font-size: 1.5rem;
+        }
+
+        header::after {
+            content: "🥑";
+            position: absolute;
+            bottom: 1rem;
+            right: 2rem;
+            font-size: 1.5rem;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            background: var(--accent-soft);
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            margin-top: 0.5rem;
+            border: 1px dashed var(--secondary);
+        }
+
+        /* Sticky Nav Bar */
+        nav {
+            background: rgba(251, 247, 253, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem;
+            border-radius: 50px;
+            border: 2px solid var(--accent-border);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.05);
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Layout Main Sections */
+        section {
+            background: var(--white);
+            border: 2.5px solid var(--accent-border);
+            border-radius: 28px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 4px 4px 0px var(--accent-border);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Meta Grid info boxes */
+        .meta-container {
+            background: var(--accent-soft);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            border: 1.5px solid var(--accent-border);
+        }
+
+        .meta-box span {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--secondary);
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-box p {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Intro Text block */
+        .intro-p {
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Cute SDG Badge */
+        .sdg-card {
+            background: #ffebee;
+            border: 2px solid #ffcdd2;
+            padding: 1.25rem;
+            border-radius: 20px;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .sdg-emoji {
+            font-size: 1.75rem;
+        }
+
+        .sdg-card h4 {
+            font-weight: 800;
+            color: #c62828;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .sdg-card p {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #b71c1c;
+        }
+
+        /* Grid Layout for Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .cute-card {
+            background: var(--white);
+            border: 2px solid var(--accent-border);
+            border-radius: 22px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 3px 3px 0px var(--accent-border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cute-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 5px 5px 0px var(--primary);
+            border-color: var(--primary);
+        }
+
+        .iframe-wrap {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #000;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .iframe-wrap iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+
+        .yt-thumb {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: opacity 0.2s ease;
+        }
+
+        .yt-play-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 64px; height: 64px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+            transition: transform 0.2s ease, background 0.2s ease;
+            pointer-events: none;
+        }
+
+        .yt-play-btn svg {
+            width: 28px; height: 28px;
+            margin-left: 4px;
+            fill: var(--primary);
+        }
+
+        .iframe-wrap:hover .yt-play-btn {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: var(--primary);
+        }
+
+        .iframe-wrap:hover .yt-play-btn svg { fill: #fff; }
+
+        .iframe-wrap:hover .yt-thumb { opacity: 0.8; }
+
+        .card-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-body h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-body .desc-text {
+            font-size: 0.88rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .card-body .cute-bubble {
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: var(--bg-main);
+            padding: 0.8rem;
+            border-radius: 14px;
+            border-left: 3.5px solid var(--primary);
+            margin-top: auto;
+        }
+
+        /* Link Buttons */
+        .btn-hub {
+            display: block;
+            text-align: center;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.65rem;
+            border-radius: 14px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            transition: background 0.15s ease;
+        }
+
+        .btn-hub:hover {
+            background: var(--secondary);
+        }
+
+        /* Tags stack list */
+        .tag-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .cute-tag {
+            background: var(--accent-soft);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 1.5px solid var(--accent-border);
+        }
+
+        /* Modernized lists */
+        .simple-list {
+            list-style: none;
+        }
+
+        .simple-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .simple-list li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Mini Footer container */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            border-top: 2px dashed var(--accent-border);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-gray);
+        }
+
+        footer p span {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            nav { flex-wrap: wrap; border-radius: 20px; }
+            nav a { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
+            section { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>TheaPantry App Portfolio</h1>
+            <p>hi inside! welcome to my dev ecosystem 🫧</p>
+        </header>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#labs">Labs</a>
+            <a href="#projects">Projects</a>
+            <a href="#reflection">Reflection</a>
+            <a href="#skills">Skills</a>
+            <a href="#resources">Resources</a>
+        </nav>
+
+        <main>
+            <section id="home">
+                <h2>Profile Overview 👋</h2>
+                <div class="meta-container">
+                    <div class="meta-box"><span>Name</span><p>Nur Ain Fatihah Binti Zainol Abidin</p></div>
+                    <div class="meta-box"><span>Matric No</span><p>A210036</p></div>
+                    <div class="meta-box"><span>Programme</span><p>Software Engineering</p></div>
+                    <div class="meta-box"><span>Instructor</span><p>Dr. Nazatul Aini Binti Abd Majid</p></div>
+                </div>
+                <p class="intro-p">TheaPantry is a smart food inventory and kitchen management application. Its primary goal is to reduce household food waste by tracking expiry dates, managing pantry stock across different storage zones (Fridge, Pantry, Freezer) and providing a visual overview of food consumption habits.</p>
+                
+                <div class="sdg-card">
+                    <div class="sdg-emoji">🌱</div>
+                    <div>
+                        <h4>SDG 12 — Responsible Consumption and Production</h4>
+                        <p><strong>TheaPantry</strong> actively curbs residential food waste through easy analytics dashboards and predictive expiration trackers, making green consumption habits super simple.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="labs">
+                <h2>Laboratory Modules 📂</h2>
+                <div class="card-grid">
+                    <div class="cute-card">
+                        <div class="iframe-wrap" onclick="window.open('https://www.youtube.com/watch?v=V2mlYWzeUzA','_blank')">
+                            <img class="yt-thumb" src="https://img.youtube.com/vi/V2mlYWzeUzA/hqdefault.jpg" alt="Lab 1 thumbnail">
+                            <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Lab 1 (UI)</h3>
+                            <p class="desc-text">Built the TheaPantry home screen UI using Jetpack Compose — pantry cards with background images, an expiry badge, a bottom navigation bar and a "+ New List" button.</p>
+                            <p class="cute-bubble">This was my first time building a full screen purely in Compose without XML, so figuring out how Box, Column and Row stack together took a bit of trial and error. Getting the card background image to sit behind the text at the right opacity was honestly more satisfying to crack than I expected.</p>
+                        </div>
+                    </div>
+
+                    <div class="cute-card">
+                        <div class="iframe-wrap" onclick="window.open('https://www.youtube.com/watch?v=oNUjJ8ML-Cs','_blank')">
+                            <img class="yt-thumb" src="https://img.youtube.com/vi/oNUjJ8ML-Cs/hqdefault.jpg" alt="Lab 2 thumbnail">
+                            <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Lab 2 (Interaction)</h3>
+                            <p class="desc-text">Added interactivity to the home screen — the pantry list now uses mutableStateListOf so users can add new custom pantry spaces on the spot, and it scrolls smoothly with LazyColumn.</p>
+                            <p class="cute-bubble">State management clicked for me here, especially seeing how remember and mutableStateOf actually re-trigger the UI when values change. The "add new list" flow — hiding the text, showing the input field, then adding to the list — was small but it felt like the app finally had a pulse.</p>
+                        </div>
+                    </div>
+
+                    <div class="cute-card">
+                        <div class="iframe-wrap" onclick="window.open('https://www.youtube.com/watch?v=vARCuw2hIpc','_blank')">
+                            <img class="yt-thumb" src="https://img.youtube.com/vi/vARCuw2hIpc/hqdefault.jpg" alt="Lab 3 thumbnail">
+                            <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Lab 3 (Material Design)</h3>
+                            <p class="desc-text">Applied a custom Material 3 theme with full light/dark/dynamic color support, and added spring-animated expanding cards so each pantry entry shows a sustainability note when tapped.</p>
+                            <p class="cute-bubble">Setting up the full color scheme token system in Theme.kt was tedious but worth it — swapping to dark mode and seeing everything adapt automatically was genuinely cool. The spring animation on the cards was a last-minute addition that ended up being one of my favorite small details in the whole project.</p>
+                        </div>
+                    </div>
+
+                    <div class="cute-card">
+                        <div class="iframe-wrap" onclick="window.open('https://www.youtube.com/watch?v=FH79_TeAvhE','_blank')">
+                            <img class="yt-thumb" src="https://img.youtube.com/vi/FH79_TeAvhE/hqdefault.jpg" alt="Lab 4 thumbnail">
+                            <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Lab 4 (Navigation)</h3>
+                            <p class="desc-text">Wired up multi-screen navigation using NavHost — the app now moves between Home, Shopping, Profile, and a Login screen, with the bottom bar hiding automatically on the login route.</p>
+                            <p class="cute-bubble">Navigation arguments were tricky at first, especially making sure the back stack cleared properly after login so you can't press back into the auth screen. Once it worked cleanly end-to-end, it felt like the app went from a prototype to something that actually behaves like a real app.</p>
+                        </div>
+                    </div>
+
+                    <div class="cute-card">
+                        <div class="iframe-wrap" onclick="window.open('https://www.youtube.com/watch?v=MDQ2bswDKZY','_blank')">
+                            <img class="yt-thumb" src="https://img.youtube.com/vi/MDQ2bswDKZY/hqdefault.jpg" alt="Lab 5 thumbnail">
+                            <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Lab 5 (Room Database)</h3>
+                            <p class="desc-text">Set up a Room database with four tables — FoodItem, PantryItem, ShoppingItem, UserAccount — each with its own DAO for insert, update, delete, and Flow-based queries.</p>
+                            <p class="cute-bubble">Room's DAO pattern made writing queries feel surprisingly clean once I got the hang of it. The singleton database instance and the Flow return type for getAllFoodItems took a bit to understand, but seeing the list update live whenever data changed was one of those moments where everything just made sense.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Featured Apps 🚀</h2>
+                <div class="card-grid">
+                    <div class="cute-card">
+                        <div class="iframe-wrap" onclick="window.open('https://www.youtube.com/watch?v=ty8Zs3i2GUU','_blank')">
+                            <img class="yt-thumb" src="https://img.youtube.com/vi/ty8Zs3i2GUU/hqdefault.jpg" alt="Project 1 thumbnail">
+                            <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Project 1: TheaPantry Base MVP</h3>
+                            <p class="desc-text"><strong>Problem Statement:</strong> Households often lose track of what's in their pantry — items expire unnoticed, groceries get bought twice, and there's no easy way to search or categorise what you have.</p>
+                            <p class="cute-bubble">This was the first time everything came together: navigation, Room database, ViewModel, and a real detail screen where you can add food items with category, quantity, unit, and expiry date. Building the PantryDetailScreen with a search bar and category grouping took the most time, but it's the screen I'm most proud of in this project.</p>
+                            <a href="https://github.com/thea-ain/TheaPantry-Base" class="btn-hub" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+
+                    <div class="cute-card">
+                        <div class="iframe-wrap" onclick="window.open('https://www.youtube.com/watch?v=ty8Zs3i2GUU','_blank')">
+                            <img class="yt-thumb" src="https://img.youtube.com/vi/ty8Zs3i2GUU/hqdefault.jpg" alt="Project 2 thumbnail">
+                            <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Project 2: Connected Cloud Ecosystem</h3>
+                            <p class="desc-text"><strong>Problem Statement:</strong> The offline-only app from Project 1 meant pantry data was stuck on one device, with no way to track food waste habits over time or discover recipes based on what you actually have.</p>
+                            <p class="cute-bubble">Project 2 added a Waste Analytics screen that tracks consumed vs wasted items as a ratio, a Community Recipe screen that pulls from both Firestore and the Spoonacular API, and a camera screen for scanning items. It's a lot more moving parts than Project 1, and honestly debugging the Firestore reads while also juggling local Room data kept me on my toes the whole time.</p>
+                            <a href="https://github.com/thea-ain/TheaPantry-Cloud" class="btn-hub" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="reflection">
+                <h2>Learning Journey 🧠</h2>
+                <p class="intro-p">Transitioning from minimal styling tasks to engineering full-fledged, cloud-synced applications has completely upgraded my technical outlook. Debugging reactive state contexts and mapping custom relational tables taught me to write highly reliable code blocks. The experience highlighted that matching clear interface trends with solid architectural foundations is key to building software that makes an impact. This solid engineering foundation sets me up perfectly to tackle complex cloud environments in the future.</p>
+            </section>
+
+            <section id="skills">
+                <h2>Tech Stack ⚡</h2>
+                <div class="tag-pool">
+                    <span class="cute-tag">Kotlin</span>
+                    <span class="cute-tag">Jetpack Compose</span>
+                    <span class="cute-tag">Room DB</span>
+                    <span class="cute-tag">Retrofit</span>
+                    <span class="cute-tag">Firebase Firestore</span>
+                    <span class="cute-tag">Firebase Auth</span>
+                    <span class="cute-tag">ML Kit</span>
+                    <span class="cute-tag">CameraX</span>
+                    <span class="cute-tag">Material 3</span>
+                    <span class="cute-tag">MVVM Pattern</span>
+                </div>
+            </section>
+
+            <section id="resources">
+                <h2>Resources & Credits 📚</h2>
+                <ul class="simple-list">
+                    <li><strong>Jetpack Architecture Suite:</strong> Engineered with Room components, Compose frameworks, and smooth lifecycle Nav libraries.</li>
+                    <li><strong>Firebase Real-time Cloud SDKs:</strong> Powered by live Firestore document nodes and Authentication workflows.</li>
+                    <li><strong>Google ML Kit & CameraX:</strong> Connected smart scanning pipelines to read receipt strings and process visual inventory inputs effortlessly.</li>
+                    <li><strong>AI Collaboration Note:</strong> Generative systems were consulted to polish custom styling rules, structure theme configurations, and refine package file organization.</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>NUR AIN FATIHAH BINTI ZAINOL ABIDIN • <span>A210036</span></p>
+            <p>TheaPantry App Portfolio • Software Engineering '26</p>
+        </footer>
+    </div>
+
+</body>
+</html>
